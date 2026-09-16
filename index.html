@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalKart</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7f9;
+      color: #222;
+    }
+
+    header {
+      background: white;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .header {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .cart {
+      background: #111;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px 20px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .category {
+      background: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      white-space: nowrap;
+      border: 1px solid #eee;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 15px;
+    }
+
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+
+    .product-image {
+      height: 130px;
+      background: #eee;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      margin-bottom: 12px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .seller {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header">
+    <div class="logo">🛍️ LocalKart</div>
+    <div class="cart">🛒 Cart (0)</div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Shop Local. Buy Local.</h1>
+  <p>Discover products from sellers near you.</p>
+
+  <input
+    class="search"
+    type="search"
+    placeholder="Search products, shops or categories..."
+  >
+</section>
+
+<section class="section">
+  <h2>Categories</h2>
+
+  <div class="categories">
+    <div class="category">🛒 Grocery</div>
+    <div class="category">👕 Clothing</div>
+    <div class="category">👟 Footwear</div>
+    <div class="category">📱 Electronics</div>
+    <div class="category">💄 Cosmetics</div>
+    <div class="category">📚 Stationery</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Popular Products</h2>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="product-image">🧂</div>
+      <h3>Salt 1 Kg</h3>
+      <div class="seller">Local Grocery Store</div>
+      <div class="price">₹28</div>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="product-image">🍚</div>
+      <h3>Rice 5 Kg</h3>
+      <div class="seller">Local Grocery Store</div>
+      <div class="price">₹320</div>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="product-image">🫗</div>
+      <h3>Cooking Oil 1 L</h3>
+      <div class="seller">Daily Needs Store</div>
+      <div class="price">₹145</div>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <div class="product-image">👕</div>
+      <h3>Men's T-Shirt</h3>
+      <div class="seller">Fashion Store</div>
+      <div class="price">₹399</div>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 LocalKart
+</footer>
+
+<script>
+  let cartCount = 0;
+
+  function addToCart() {
+    cartCount++;
+
+    document.querySelector(".cart").innerText =
+      "🛒 Cart (" + cartCount + ")";
+  }
+</script>
+
+</body>
+</html>
